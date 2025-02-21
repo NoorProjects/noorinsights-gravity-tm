@@ -1,5 +1,5 @@
 homepage: "https://noordigital.com/"
 documentation: "panel.noorinsights.com/docs/integrate-with-gravity-form-in-tag-manager"
 versions:
-  - sha: 
+  - sha: 76ca3c89293477310a80461f5d67c3ea5a63e661
     changeNotes: Initial release.
