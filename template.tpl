@@ -193,19 +193,19 @@ const log = require('logToConsole');
 const copyFromWindow = require('copyFromWindow');
 
 // URL for the external script
-const url = 'https://panel.noorinsights.com/js/noor-utm@latest.min.js';
+const url = 'https://panel.noorinsights.com/js/noor-insights@latest.min.js';
 
 // Inject the script and execute after it's loaded
 injectScript(
   url,
   function() {
-    log('✅ Noor UTM script loaded successfully.');
+    log('✅ Noor Insights script loaded successfully.');
 
     const NoorNamespace = copyFromWindow('NoorNamespace');
-    const gravityAll = copyFromWindow('NoorNamespace.NoorUTM.gravityAll');
+    const gravityAll = copyFromWindow('NoorNamespace.NoorInsights.gravityAll');
 
-    if (NoorNamespace && typeof NoorNamespace.NoorUTM === 'function' && typeof gravityAll === 'function') {
-      log('🚀 NoorNamespace.NoorUTM is available. Running UTM code...');
+    if (NoorNamespace && typeof NoorNamespace.NoorInsights === 'function' && typeof gravityAll === 'function') {
+      log('🚀 NoorNamespace.NoorInsights is available. Running Insights code...');
 
         log(data);
         var configuration = {};
@@ -253,12 +253,12 @@ injectScript(
 
       data.gtmOnSuccess();
     } else {
-      log('❌ NoorNamespace.NoorUTM is NOT available after script load.');
+      log('❌ NoorNamespace.NoorInsights is NOT available after script load.');
       data.gtmOnFailure();
     }
   },
   function() {
-    log('❌ Failed to load Noor UTM script from:', url);
+    log('❌ Failed to load Noor Insights script from:', url);
     data.gtmOnFailure();
   },
   url
@@ -303,7 +303,7 @@ ___WEB_PERMISSIONS___
             "listItem": [
               {
                 "type": 1,
-                "string": "https://panel.noorinsights.com/js/noor-utm@latest.min.js"
+                "string": "https://panel.noorinsights.com/js/noor-insights@latest.min.js"
               }
             ]
           }
@@ -389,7 +389,7 @@ ___WEB_PERMISSIONS___
                 "mapValue": [
                   {
                     "type": 1,
-                    "string": "NoorNamespace.NoorUTM"
+                    "string": "NoorNamespace.NoorInsights"
                   },
                   {
                     "type": 8,
@@ -428,7 +428,7 @@ ___WEB_PERMISSIONS___
                 "mapValue": [
                   {
                     "type": 1,
-                    "string": "NoorNamespace.NoorUTM.gravityAll"
+                    "string": "NoorNamespace.NoorInsights.gravityAll"
                   },
                   {
                     "type": 8,
