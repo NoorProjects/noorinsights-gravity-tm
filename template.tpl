@@ -52,11 +52,33 @@ ___TEMPLATE_PARAMETERS___
     ]
   },
   {
-    "type": "CHECKBOX",
-    "name": "debug",
-    "checkboxText": "Debug",
-    "simpleValueType": true,
-    "help": "Select this if you want to see messaged on your developer console. Used by developers."
+    "type": "GROUP",
+    "name": "Debug",
+    "displayName": "Debug settings",
+    "groupStyle": "ZIPPY_CLOSED",
+    "subParams": [
+      {
+        "type": "CHECKBOX",
+        "name": "debug",
+        "checkboxText": "Debug",
+        "simpleValueType": true,
+        "help": "Select this if you want to see messaged on your developer console. Used by developers."
+      },
+      {
+        "type": "CHECKBOX",
+        "name": "verbose",
+        "checkboxText": "Verbose",
+        "simpleValueType": true,
+        "help": "Select this if you want to see a full description of what happens during the process. Used by developers."
+      },
+      {
+        "type": "CHECKBOX",
+        "name": "send_logs",
+        "checkboxText": "Send Logs",
+        "simpleValueType": true,
+        "help": "Select this to send the log info to the API for further investigations."
+      }
+    ]
   },
   {
     "type": "GROUP",
@@ -193,7 +215,7 @@ const log = require('logToConsole');
 const copyFromWindow = require('copyFromWindow');
 
 // URL for the external script
-const url = 'https://panel.noorinsights.com/js/noor-insights@latest.min.js';
+const url = 'https://panel.noorinsights.com/js/noor-insights@1.0.0-beta2.min.js';
 
 // Inject the script and execute after it's loaded
 injectScript(
@@ -210,6 +232,8 @@ injectScript(
         log(data);
         var configuration = {};
         configuration.debug = data.debug;
+        configuration.verbose = data.verbose;
+        configuration.send_logs = data.send_logs;
         configuration.fields = {
           currentPageURL: data.currentPageURL || true,
           firstPageVisited: data.firstPageVisited || true,
@@ -303,7 +327,7 @@ ___WEB_PERMISSIONS___
             "listItem": [
               {
                 "type": 1,
-                "string": "https://panel.noorinsights.com/js/noor-insights@latest.min.js"
+                "string": "https://panel.noorinsights.com/js/noor-insights@1.0.0-beta2.min.js"
               }
             ]
           }
