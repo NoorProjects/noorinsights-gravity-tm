@@ -215,7 +215,7 @@ const log = require('logToConsole');
 const copyFromWindow = require('copyFromWindow');
 
 // URL for the external script
-const url = 'https://panel.noorinsights.com/js/noor-insights@1.0.0-beta2.min.js';
+const url = 'https://panel.noorinsights.com/js/noor-insights@1.0.0-beta4.min.js';
 
 // Inject the script and execute after it's loaded
 injectScript(
@@ -327,7 +327,7 @@ ___WEB_PERMISSIONS___
             "listItem": [
               {
                 "type": 1,
-                "string": "https://panel.noorinsights.com/js/noor-insights@1.0.0-beta2.min.js"
+                "string": "https://panel.noorinsights.com/js/noor-insights@1.0.0-beta4.min.js"
               }
             ]
           }
