@@ -14,7 +14,11 @@ ___INFO___
   "version": 1,
   "securityGroups": [],
   "displayName": "Noor Insights Gravity Form Integration",
-  "categories": ["CONVERSIONS", "REMARKETING", "SESSION_RECORDING"],
+  "categories": [
+    "CONVERSIONS",
+    "REMARKETING",
+    "SESSION_RECORDING"
+  ],
   "brand": {
     "id": "Noor Digital",
     "displayName": "",
