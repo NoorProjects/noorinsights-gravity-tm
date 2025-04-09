@@ -52,6 +52,13 @@ ___TEMPLATE_PARAMETERS___
     ]
   },
   {
+    "type": "TEXT",
+    "name": "formName",
+    "displayName": "Form name",
+    "simpleValueType": true,
+    "help": "This is the custom name you can give to your form. Later all the entries will be apeard with the same name form on Noor Insights panel."
+  },
+  {
     "type": "GROUP",
     "name": "Debug",
     "displayName": "Debug settings",
@@ -204,6 +211,33 @@ ___TEMPLATE_PARAMETERS___
       }
     ],
     "help": "Here, you decide to map HTML elements to Noor Insight fields. (Like mapping input_1 to email)"
+  },
+  {
+    "type": "TEXT",
+    "name": "excludedFields",
+    "displayName": "Excluded fields",
+    "simpleValueType": true,
+    "help": "Write a comma separated list of the form fields you don\u0027t want to send to Noor Insights panel. (If it\u0027s an HTML form element, use the name attribute)"
+  },
+  {
+    "type": "SIMPLE_TABLE",
+    "name": "customData",
+    "displayName": "Custom data",
+    "simpleTableColumns": [
+      {
+        "defaultValue": "",
+        "displayName": "Parameter name",
+        "name": "customDataName",
+        "type": "TEXT"
+      },
+      {
+        "defaultValue": "",
+        "displayName": "Parameter value",
+        "name": "customDataValue",
+        "type": "TEXT"
+      }
+    ],
+    "help": "These key-value pairs are directly sent to Noor Insights panel to be stored. You can later see these values when someone submits the form."
   }
 ]
 
@@ -215,7 +249,7 @@ const log = require('logToConsole');
 const copyFromWindow = require('copyFromWindow');
 
 // URL for the external script
-const url = 'https://panel.noorinsights.com/js/noor-insights@1.0.0-beta4.min.js';
+const url = 'https://panel.noorinsights.com/js/noor-insights@1.0.0-beta6.min.js';
 
 // Inject the script and execute after it's loaded
 injectScript(
@@ -273,7 +307,7 @@ injectScript(
           mappedFields.push({ original: data.messageField, mapped: 'message' });
         }
 
-        gravityAll(data.gravityFormId, data.integrationCode, configuration, mappedFields, customizedFields);
+        gravityAll(data.gravityFormId, data.formName, data.integrationCode, configuration, mappedFields, customizedFields, data.customData, data.excludedFields);
 
       data.gtmOnSuccess();
     } else {
@@ -327,7 +361,7 @@ ___WEB_PERMISSIONS___
             "listItem": [
               {
                 "type": 1,
-                "string": "https://panel.noorinsights.com/js/noor-insights@1.0.0-beta4.min.js"
+                "string": "https://panel.noorinsights.com/js/noor-insights@1.0.0-beta6.min.js"
               }
             ]
           }
